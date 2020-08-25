@@ -1,0 +1,44 @@
+max_rd_len=100
+[LIB]
+avg_ins=200
+reverse_seq=0
+asm_flags=3
+rd_len_cutoff=100
+rank=1
+pair_num_cutoff=3
+map_len=32
+q1=/home/minminli/genomesurvey/Staphylococcus_aureu/raw-data/lib1/corrected_1.fq
+q2=/home/minminli/genomesurvey/Staphylococcus_aureu/raw-data/lib1/corrected_2.fq
+
+
+
+#maximal read length
+#该值一般设置的比实际read读长稍微短一些，截去测序最后的部分，具体长度看测序质量
+#max_rd_len=100
+#文库信息以此开头
+#[LIB]
+#average insert size
+#文库平均插入长度，一般取插入片段分布图中给出的文库大小
+#avg_ins=200
+#if sequence needs to be reversed
+#是否需要将序列反向互补，对于pair-end数据，不需要反向互补，设置为0；对于mate-pair数据，需要反向互补，设置为1
+#reverse_seq=0
+#in which part(s) the reads are used
+#1表示只组装contig,2表示只组装scaffold，3表示同时组装contig和scaffold，4表示只补gap。短插入片段(<2K)的设为3，同时用于构建contig和scaffold，长插入片段(>=2k)设为2，不用于构建contig，只用于构建scaffold，454single 长reads只用于补洞。
+#asm_flags=3
+#use only first 100 bps of each read
+#序列长度阈值，作用和max_rd_len相同，大于该长度的序列会被切除到该长度
+#rd_len_cutoff=100
+#in which order the reads are used while scaffolding
+#设置不同文库数据的优先级顺序，取值范围为整数，rank值相同的多个文库，在组装scaffold时，会同时使用。一般将短插入片段设为1；2k设为2；5k设为3；10k设为4；当某个档的数据量较大时，也可以将其分为多个档，同样，当某档数据量不足够时，可以将多个档的数据合在一起构建scaffold。这里说的数据量够与不够是从该档的测序覆盖度和物理覆盖度两个方面来考虑的。
+#rank=1
+#cutoff of pair number for a reliable connection (at least 3 for short insert size)
+#contig或者scaffold之前的最小overlap个数，对于pair-end数据，默认值为3；对于mate-paird数据，默认值为5
+#pair_num_cutoff=3
+#minimum aligned length to contigs for a reliable read location (at least 32 for short insert size)
+#比对长度的最小阈值，对于pair-end数据，默认值为32；对于mate-pair数据，默认值为35
+#map_len=32
+#a pair of fastq file, read 1 file should always be followed by read 2 file
+#q1=/home/minminli/genomesurvey/Staphylococcus_aureu/raw-data/lib1/corrected_1.fq
+#q2=/home/minminli/genomesurvey/Staphylococcus_aureu/raw-data/lib1/corrected_2.fq
+
